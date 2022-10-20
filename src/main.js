@@ -1,5 +1,5 @@
 import "./css/index.css"
-import IMask from 'imask'
+import IMask, { MaskedRange } from 'imask'
 
 
 const ccBgColor01 = document.querySelector(".cc-bg svg > g g:nth-child(1) path")
@@ -33,3 +33,23 @@ const securityCodePattern = {
 }
 
 const securityCodeMasked = IMask(securityCode, securityCodePattern)
+
+
+const expirationDate = document.querySelector("#expiration-date")
+const expirationDatePattern = {
+    mask: "MM{/}YY",
+    blocks: {
+        YY: {
+            mask: IMask.MaskedRange,
+            from: String(new Date().getFullYear()).slice(2),
+            to: String(new Date().getFullYear() + 10).slice(2)
+        },
+        MM: {
+            mask: IMask.MaskedRange,
+            from: 1,
+            to: 12
+        }
+    }
+}
+
+const expirationDateMasked = IMask(expirationDate, expirationDatePattern)
