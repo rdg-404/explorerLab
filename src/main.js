@@ -105,5 +105,6 @@ const cardHolder = document.querySelector("#card-holder")
 cardHolder.addEventListener("input", () => {
     const ccHolder = document.querySelector(".cc-holder .value")
 
-    ccHolder.innerText = cardHolder.value
+    //substitindo o nome no cartao "ccHolder" pelo valor digitado "cardHolder"
+    ccHolder.innerText = cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value
 })
